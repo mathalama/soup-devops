@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mathalama-soup-release-demo"
+version = "0.9.4"
+description = "A small CLI for testing release pipeline assumptions"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+soup-demo = "soup_release_demo.cli:main"
+
+[dependency-groups]
+dev = ["build==1.2.2.post1", "hatchling==1.27.0", "ruff==0.11.13"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/soup_release_demo"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "pyproject.toml", "README.md"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
