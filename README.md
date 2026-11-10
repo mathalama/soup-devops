@@ -28,21 +28,21 @@ Injection happens only in the disposable runner checkout and never publishes an 
 See [evidence](tasks/evidence.md), [supply-chain controls](docs/SUPPLY-CHAIN.md), and
 [GPU design](docs/GPU-DESIGN.md). Do not hide or delete failed runs.
 
-## TestPyPI setup
-Create a pending trusted publisher on TestPyPI:
-- Project: `mathalama-soup-release-demo`
-- Owner: `mathalama`, repository: `soup-devops`
-- Workflow: `release.yml`, environment: `testpypi`
-
-After trusted-publisher and environment configuration, tag version 0.9.4 as `v0.9.4`.
-The tag/version gate runs before publication; publication waits for all installed and Docker jobs.
-Only TestPyPI is configured. Do not republish an existing version or delete failed evidence.
+## TestPyPI status
+The GitHub `testpypi` environment exists and its deployment policy permits tags matching
+`v*`. No `v0.9.4` tag has been pushed and no publication or post-publication installation
+has been observed. Register and verify the exact TestPyPI trusted publisher before tagging:
+project `mathalama-soup-release-demo`, owner `mathalama`, repository `soup-devops`, workflow
+`release.yml`, environment `testpypi`. Do not republish an existing version or delete failed
+evidence.
 
 ## Evidence status
 - Source contract tests: see tasks/evidence.md.
-- Actions red/green runs: executing; see tasks/evidence.md for confirmed results.
+- Actions red/green runs: confirmed; see tasks/evidence.md. Latest fixed run passed build,
+  Docker, and all 15 installed-artifact matrix jobs (3 operating systems x 5 Python versions).
 - Docker verification: successful on GitHub-hosted Linux; local Docker engine unavailable.
-- TestPyPI publication: not yet configured or executed.
+- TestPyPI publication: environment tag policy is configured; trusted-publisher registration,
+  tagged publication, byte verification, and post-publication installation are not yet evidenced.
 
 ## AI use
 Codex read the assignment, proposed the initial design, and generated the initial files.

@@ -30,7 +30,12 @@ with --require-hashes, and pip builds with --no-build-isolation. Local
 Fixed package: [GREEN](https://github.com/mathalama/soup-devops/actions/runs/42808827101).
 All nine installed lanes passed: Linux, Windows, macOS x Python 3.10/3.12/3.14.
 Build/lint and Docker also passed. Publish was correctly skipped on a branch push.
-Latest workflow expands coverage to 3.11 and 3.13 as well; its result is not yet claimed here.
+
+Latest fixed workflow run on commit `6e89c0d`:
+[GREEN](https://github.com/mathalama/soup-devops/actions/runs/42810942601). The build,
+Docker check, and all 15 installed-artifact lanes passed across Linux, Windows and macOS x
+Python 3.10 through 3.14. The publish and verify-index jobs were skipped because this was a
+push to `main`, not a version tag. Thus this run confirms CI coverage, not registry publication.
 
 Experiment dispatch: one GitHub GraphQL request timed out before creating the naive entry-point
 run. Retried only that dispatch with an explicit main ref, creating run 42809106795.
@@ -39,6 +44,11 @@ No failed run was deleted or hidden.
 ## Subsequent checks
 - `uv run --locked ruff check .` and full source suite: passed after adding documentation and workflow improvements.
 - GitHub environment testpypi: configured with a custom deployment policy permitting tag `v*` only.
+- GitHub environment policy was subsequently queried and confirmed as tag pattern `v*`.
+- No `v0.9.4` tag or TestPyPI publication is evidenced. Trusted-publisher registration and an
+  end-to-end upload/install still need verification before claiming that deliverable complete.
+- Read-only TestPyPI JSON API lookup for `mathalama-soup-release-demo` returned HTTP 404 on
+  2026-11-10, confirming that the project is not currently visible on TestPyPI.
 - Added TestPyPI byte verification: three contract tests first failed because module was absent; green result recorded after implementation.
 - Two-page PDF generated. Bundled MiKTeX pdftoppm could not render because its setup is incomplete; switched to pypdfium2 without modifying the TeX installation.
 - Initial environment API update using stdin JSON failed (400 parse error); nested typed gh fields succeeded. No partial environment rule is claimed from the failed call.

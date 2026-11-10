@@ -1,10 +1,11 @@
 # Work checklist
-- [ ] CLI contract: red test, implementation, green test.
-- [ ] Clean wheel and sdist installation checks.
-- [ ] Four independent incident reproductions and preserved results.
-- [ ] Docker and hardened Actions workflow.
-- [ ] Supply-chain controls and negative checks.
-- [ ] GitHub red/green evidence.
-- [ ] TestPyPI OIDC publication and post-publication installation.
-- [ ] GPU design and sourced cost assumptions.
-- [ ] Two-page verdict, concerns paragraph, AI disclosure.
+- [x] CLI contract: red test, implementation, green test.
+- [x] Clean wheel and sdist installation checks.
+- [x] Four independent incident reproductions and preserved results.
+- [x] Docker and hardened Actions workflow.
+- [x] Supply-chain controls and negative checks.
+- [x] GitHub red/green evidence, including the current 15-lane green run.
+- [ ] TestPyPI OIDC publication and post-publication installation; no v0.9.4 tag exists yet.
+- [x] GPU design and sourced cost assumptions (design only; no GPU execution claimed).
+- [x] Two-page verdict and AI-use disclosure drafted.
+- [ ] Candidate review: add personal observations and verify the AI-use disclosure before submission.
